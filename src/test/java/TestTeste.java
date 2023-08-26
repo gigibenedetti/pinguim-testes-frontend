@@ -145,6 +145,59 @@ public class TestTeste {
 		assertEquals("Sending e-mail success!", text);
 	}
 	
+	@Test
+	public void CT03_COMPRADEROUPAAZUL() {
+		
+		driver.findElement(By.xpath("//div[@class=\"main-navigation\"]//a[@id=\"nav_automobile\"]")).click();
+		driver.findElement(By.id("make")).click();
+		driver.findElement(By.xpath("//option[.='" + modelos[3] + "']")).click();
+		driver.findElement(By.id("engineperformance")).sendKeys("500");
+		driver.findElement(By.id("dateofmanufacture")).sendKeys("12/30/1500");
+		driver.findElement(By.xpath("//option[.='" + numberSeats[3] + "']")).click();
+		driver.findElement(By.xpath("//option[.='" + tipoCombustivel[2] + "']")).click();
+		driver.findElement(By.id("listprice")).sendKeys("1200");
+		driver.findElement(By.id("licenseplatenumber")).sendKeys("12032");
+		driver.findElement(By.id("annualmileage")).sendKeys("50000");
+		driver.findElement(By.id("nextenterinsurantdata")).click();
+		driver.findElement(By.id("firstname")).sendKeys("Giovanna");
+		driver.findElement(By.id("lastname")).sendKeys("Ferreira");
+		driver.findElement(By.id("birthdate")).sendKeys("02/28/2002");
+		driver.findElement(By.xpath("//option[.='" + country + "']")).click();
+		driver.findElement(By.id("zipcode")).sendKeys("02349133");
+		driver.findElement(By.xpath("//option[.='" + occupation + "']")).click();
+		driver.findElement(By
+				.xpath("//div[@class='field idealforms-field idealforms-field-checkbox']/p[@class=\"group\"]/label[2]"))
+				.click();
+		driver.findElement(By.id("nextenterproductdata")).click();
+		
+		driver.findElement(By.id("startdate")).sendKeys("09/23/2030");
+		driver.findElement(By.id("insurancesum")).click();
+		driver.findElement(By.xpath("//option[.=' 3.000.000,00']")).click();
+		driver.findElement(By.xpath("//option[.='Bonus 1']")).click();
+		driver.findElement(By.xpath("//option[.='No Coverage']")).click();
+		driver.findElement(By.xpath("//option[.=' No']")).click();
+		
+		driver.findElement(By
+				.xpath("//div[@class='field idealforms-field idealforms-field-checkbox']/p[@class=\"group\"]/label[2]"))
+				.click();
+		driver.findElement(By
+				.id("nextselectpriceoption"))
+				.click();
+		
+		driver.findElement(By.xpath("//th/label[1]")).click();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.findElement(By.id("nextsendquote")).click();
+		driver.findElement(By.id("email")).sendKeys("asdasjd@hotmail.com");
+		driver.findElement(By.id("username")).sendKeys("Giovanna");
+		driver.findElement(By.id("password")).sendKeys("Abc1234");
+		driver.findElement(By.id("confirmpassword")).sendKeys("Abc1234");
+		driver.findElement(By.id("sendemail")).click();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		String text = driver.findElement(By.xpath("//h2")).getText();
+		System.out.println(text);
+		assertEquals("Sending e-mail success!", text);
+	}
+	
 	@After
 	public void after(){
 		driver.close();
